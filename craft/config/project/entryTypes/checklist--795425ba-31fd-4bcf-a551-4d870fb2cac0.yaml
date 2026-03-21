@@ -1,0 +1,70 @@
+color: null
+description: null
+fieldLayouts:
+  4f0c3a48-38d8-43c1-a1cb-5f0c49644428:
+    cardThumbAlignment: end
+    tabs:
+      -
+        elementCondition: null
+        elements:
+          -
+            autocapitalize: true
+            autocomplete: false
+            autocorrect: true
+            class: null
+            dateAdded: '2026-03-17T13:22:09+00:00'
+            disabled: false
+            elementCondition: null
+            id: null
+            includeInCards: false
+            inputType: null
+            instructions: null
+            label: null
+            max: null
+            min: null
+            name: null
+            orientation: null
+            placeholder: null
+            providesThumbs: false
+            readonly: false
+            required: true
+            size: null
+            step: null
+            tip: null
+            title: null
+            type: craft\fieldlayoutelements\entries\EntryTitleField
+            uid: 8515907b-3d8f-4b50-85aa-33d6f22e9684
+            userCondition: null
+            warning: null
+            width: 100
+          -
+            dateAdded: '2026-03-17T13:45:50+00:00'
+            editCondition: null
+            elementCondition: null
+            fieldUid: 6d21964d-ade2-488d-bf27-ba679b83d586
+            handle: null
+            includeInCards: false
+            instructions: null
+            label: null
+            providesThumbs: false
+            required: false
+            tip: null
+            type: craft\fieldlayoutelements\CustomField
+            uid: 4fca6c66-a017-48a9-85f8-8f018a5284d6
+            userCondition: null
+            warning: null
+            width: 100
+        name: Obsah
+        uid: 1ef28358-31cd-4a18-95b3-e1f5841b1bf2
+        userCondition: null
+handle: checklist
+hasTitleField: true
+icon: null
+name: Checklist
+showSlugField: true
+showStatusField: true
+slugTranslationKeyFormat: null
+slugTranslationMethod: site
+titleFormat: null
+titleTranslationKeyFormat: null
+titleTranslationMethod: site

@@ -1,0 +1,472 @@
+openapi: 3.1.0
+info:
+  title: Fullstack Skeleton API
+  version: 1.0.0
+  description: REST API
+servers:
+  - url: https://api.localhost
+    description: Local development
+components:
+  schemas:
+    Note:
+      type: object
+      properties:
+        id:
+          type: string
+          format: uuid
+          description: Unique identifier
+          example: 550e8400-e29b-41d4-a716-446655440000
+        title:
+          type: string
+          minLength: 1
+          maxLength: 200
+          description: Note title
+          example: My first note
+        content:
+          type: string
+          description: Note body
+          example: This is the content of my note.
+        completed:
+          type: boolean
+          description: Whether the note is completed
+        createdAt:
+          type: string
+          format: date-time
+          description: Creation timestamp
+        updatedAt:
+          type: string
+          format: date-time
+          description: Last update timestamp
+      required:
+        - id
+        - title
+        - content
+        - completed
+        - createdAt
+        - updatedAt
+    CreateNote:
+      type: object
+      properties:
+        title:
+          type: string
+          minLength: 1
+          maxLength: 200
+          description: Note title
+          example: My first note
+        content:
+          type: string
+          description: Note body
+          example: This is the content of my note.
+        completed:
+          type: boolean
+          default: false
+          description: Whether the note is completed
+      required:
+        - title
+        - content
+    UpdateNote:
+      type: object
+      properties:
+        title:
+          type: string
+          minLength: 1
+          maxLength: 200
+          description: Note title
+          example: My first note
+        content:
+          type: string
+          description: Note body
+          example: This is the content of my note.
+        completed:
+          type: boolean
+          description: Whether the note is completed
+    NoteList:
+      type: object
+      properties:
+        items:
+          type: array
+          items:
+            type: object
+            properties:
+              id:
+                type: string
+                format: uuid
+                description: Unique identifier
+                example: 550e8400-e29b-41d4-a716-446655440000
+              title:
+                type: string
+                minLength: 1
+                maxLength: 200
+                description: Note title
+                example: My first note
+              content:
+                type: string
+                description: Note body
+                example: This is the content of my note.
+              completed:
+                type: boolean
+                description: Whether the note is completed
+              createdAt:
+                type: string
+                format: date-time
+                description: Creation timestamp
+              updatedAt:
+                type: string
+                format: date-time
+                description: Last update timestamp
+            required:
+              - id
+              - title
+              - content
+              - completed
+              - createdAt
+              - updatedAt
+        total:
+          type: integer
+          description: Total number of notes
+      required:
+        - items
+        - total
+    Error:
+      type: object
+      properties:
+        error:
+          type: string
+          description: Error message
+      required:
+        - error
+  parameters: {}
+paths:
+  /api/notes:
+    get:
+      summary: List all notes
+      tags:
+        - Notes
+      responses:
+        "200":
+          description: List of notes
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  items:
+                    type: array
+                    items:
+                      type: object
+                      properties:
+                        id:
+                          type: string
+                          format: uuid
+                          description: Unique identifier
+                          example: 550e8400-e29b-41d4-a716-446655440000
+                        title:
+                          type: string
+                          minLength: 1
+                          maxLength: 200
+                          description: Note title
+                          example: My first note
+                        content:
+                          type: string
+                          description: Note body
+                          example: This is the content of my note.
+                        completed:
+                          type: boolean
+                          description: Whether the note is completed
+                        createdAt:
+                          type: string
+                          format: date-time
+                          description: Creation timestamp
+                        updatedAt:
+                          type: string
+                          format: date-time
+                          description: Last update timestamp
+                      required:
+                        - id
+                        - title
+                        - content
+                        - completed
+                        - createdAt
+                        - updatedAt
+                  total:
+                    type: integer
+                    description: Total number of notes
+                required:
+                  - items
+                  - total
+    post:
+      summary: Create a note
+      tags:
+        - Notes
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                title:
+                  type: string
+                  minLength: 1
+                  maxLength: 200
+                  description: Note title
+                  example: My first note
+                content:
+                  type: string
+                  description: Note body
+                  example: This is the content of my note.
+                completed:
+                  type: boolean
+                  default: false
+                  description: Whether the note is completed
+              required:
+                - title
+                - content
+      responses:
+        "201":
+          description: Note created
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  id:
+                    type: string
+                    format: uuid
+                    description: Unique identifier
+                    example: 550e8400-e29b-41d4-a716-446655440000
+                  title:
+                    type: string
+                    minLength: 1
+                    maxLength: 200
+                    description: Note title
+                    example: My first note
+                  content:
+                    type: string
+                    description: Note body
+                    example: This is the content of my note.
+                  completed:
+                    type: boolean
+                    description: Whether the note is completed
+                  createdAt:
+                    type: string
+                    format: date-time
+                    description: Creation timestamp
+                  updatedAt:
+                    type: string
+                    format: date-time
+                    description: Last update timestamp
+                required:
+                  - id
+                  - title
+                  - content
+                  - completed
+                  - createdAt
+                  - updatedAt
+        "400":
+          description: Validation error
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  error:
+                    type: string
+                    description: Error message
+                required:
+                  - error
+  /api/notes/{id}:
+    get:
+      summary: Get a note by ID
+      tags:
+        - Notes
+      parameters:
+        - schema:
+            type: string
+            format: uuid
+            description: Unique identifier
+            example: 550e8400-e29b-41d4-a716-446655440000
+          required: true
+          description: Unique identifier
+          name: id
+          in: path
+      responses:
+        "200":
+          description: Note found
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  id:
+                    type: string
+                    format: uuid
+                    description: Unique identifier
+                    example: 550e8400-e29b-41d4-a716-446655440000
+                  title:
+                    type: string
+                    minLength: 1
+                    maxLength: 200
+                    description: Note title
+                    example: My first note
+                  content:
+                    type: string
+                    description: Note body
+                    example: This is the content of my note.
+                  completed:
+                    type: boolean
+                    description: Whether the note is completed
+                  createdAt:
+                    type: string
+                    format: date-time
+                    description: Creation timestamp
+                  updatedAt:
+                    type: string
+                    format: date-time
+                    description: Last update timestamp
+                required:
+                  - id
+                  - title
+                  - content
+                  - completed
+                  - createdAt
+                  - updatedAt
+        "404":
+          description: Note not found
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  error:
+                    type: string
+                    description: Error message
+                required:
+                  - error
+    put:
+      summary: Update a note
+      tags:
+        - Notes
+      parameters:
+        - schema:
+            type: string
+            format: uuid
+            description: Unique identifier
+            example: 550e8400-e29b-41d4-a716-446655440000
+          required: true
+          description: Unique identifier
+          name: id
+          in: path
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                title:
+                  type: string
+                  minLength: 1
+                  maxLength: 200
+                  description: Note title
+                  example: My first note
+                content:
+                  type: string
+                  description: Note body
+                  example: This is the content of my note.
+                completed:
+                  type: boolean
+                  description: Whether the note is completed
+      responses:
+        "200":
+          description: Note updated
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  id:
+                    type: string
+                    format: uuid
+                    description: Unique identifier
+                    example: 550e8400-e29b-41d4-a716-446655440000
+                  title:
+                    type: string
+                    minLength: 1
+                    maxLength: 200
+                    description: Note title
+                    example: My first note
+                  content:
+                    type: string
+                    description: Note body
+                    example: This is the content of my note.
+                  completed:
+                    type: boolean
+                    description: Whether the note is completed
+                  createdAt:
+                    type: string
+                    format: date-time
+                    description: Creation timestamp
+                  updatedAt:
+                    type: string
+                    format: date-time
+                    description: Last update timestamp
+                required:
+                  - id
+                  - title
+                  - content
+                  - completed
+                  - createdAt
+                  - updatedAt
+        "400":
+          description: Validation error
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  error:
+                    type: string
+                    description: Error message
+                required:
+                  - error
+        "404":
+          description: Note not found
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  error:
+                    type: string
+                    description: Error message
+                required:
+                  - error
+    delete:
+      summary: Delete a note
+      tags:
+        - Notes
+      parameters:
+        - schema:
+            type: string
+            format: uuid
+            description: Unique identifier
+            example: 550e8400-e29b-41d4-a716-446655440000
+          required: true
+          description: Unique identifier
+          name: id
+          in: path
+      responses:
+        "204":
+          description: Note deleted
+        "404":
+          description: Note not found
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  error:
+                    type: string
+                    description: Error message
+                required:
+                  - error
+webhooks: {}

@@ -1,0 +1,15 @@
+# Worktree web container — project-specific compose override
+# This file is merged with .worktree/docker/docker-compose.base.yml by docker compose.
+# Customize for your project: add volumes, environment variables.
+#
+# Compose merge behavior:
+#   volumes:     appended (add project-specific mounts)
+#   environment: merged by key (add/override env vars)
+
+services:
+  web:
+    # volumes:
+    #   - ${MAIN_REPO_ROOT}/openapi:/app/openapi:ro
+    # environment:
+    #   DOTENV_ENV: dev
+    #   NUXT_PUBLIC_SITE_URL: https://${WT_DOMAIN}

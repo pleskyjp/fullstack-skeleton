@@ -1,0 +1,104 @@
+color: null
+description: null
+fieldLayouts:
+  a86ae628-5ed1-40b0-ad90-6dd37abd3eba:
+    cardThumbAlignment: end
+    tabs:
+      -
+        elementCondition: null
+        elements:
+          -
+            autocapitalize: true
+            autocomplete: false
+            autocorrect: true
+            class: null
+            dateAdded: '2026-03-17T13:32:33+00:00'
+            disabled: false
+            elementCondition: null
+            id: null
+            includeInCards: false
+            inputType: null
+            instructions: null
+            label: null
+            max: null
+            min: null
+            name: null
+            orientation: null
+            placeholder: null
+            providesThumbs: false
+            readonly: false
+            required: true
+            size: null
+            step: null
+            tip: null
+            title: null
+            type: craft\fieldlayoutelements\entries\EntryTitleField
+            uid: 49d30457-808a-4f2a-8bc1-990a2ac244bc
+            userCondition: null
+            warning: null
+            width: 100
+          -
+            dateAdded: '2026-03-18T07:11:55+00:00'
+            editCondition: null
+            elementCondition: null
+            fieldUid: 140dc658-d74c-451a-bfd1-412067b169c5
+            handle: null
+            includeInCards: false
+            instructions: null
+            label: null
+            providesThumbs: false
+            required: false
+            tip: null
+            type: craft\fieldlayoutelements\CustomField
+            uid: a352e3ee-5329-428d-a5d6-fceed18c719a
+            userCondition: null
+            warning: null
+            width: 100
+          -
+            dateAdded: '2026-03-18T07:11:55+00:00'
+            editCondition: null
+            elementCondition: null
+            fieldUid: 6327c31a-9322-41ac-a0b5-2273e4d3c149
+            handle: null
+            includeInCards: false
+            instructions: null
+            label: null
+            providesThumbs: false
+            required: false
+            tip: null
+            type: craft\fieldlayoutelements\CustomField
+            uid: 714776f3-6387-45d7-9032-2991deee1b28
+            userCondition: null
+            warning: null
+            width: 100
+          -
+            dateAdded: '2026-03-18T07:11:55+00:00'
+            editCondition: null
+            elementCondition: null
+            fieldUid: cdec8892-88d6-451d-b181-dc896f273f1f
+            handle: null
+            includeInCards: false
+            instructions: null
+            label: null
+            providesThumbs: false
+            required: false
+            tip: null
+            type: craft\fieldlayoutelements\CustomField
+            uid: abdceab1-562e-4396-9121-6e28c689a0af
+            userCondition: null
+            warning: null
+            width: 100
+        name: Obsah
+        uid: 0a9c6da0-d863-4cb3-afc3-be99aad5a50a
+        userCondition: null
+handle: authorCard
+hasTitleField: true
+icon: null
+name: 'Author Card'
+showSlugField: true
+showStatusField: true
+slugTranslationKeyFormat: null
+slugTranslationMethod: site
+titleFormat: null
+titleTranslationKeyFormat: null
+titleTranslationMethod: site

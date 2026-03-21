@@ -1,0 +1,36 @@
+{
+  "name": "fullstack-skeleton-app",
+  "version": "0.1.0",
+  "private": true,
+  "scripts": {
+    "dev": "dotenvx run --convention=flow -- next dev",
+    "build": "dotenvx run --convention=flow -- next build",
+    "start": "dotenvx run --convention=flow -- next start",
+    "lint": "eslint",
+    "gen:types": "dotenvx run --convention=flow -- graphql-codegen --config codegen.ts",
+    "gen:api-client": "openapi-ts",
+    "secrets-setup": "node scripts/setup-dev.mjs"
+  },
+  "dependencies": {
+    "@graphql-typed-document-node/core": "^3.2.0",
+    "graphql": "^16.13.1",
+    "next": "16.2.1",
+    "next-intl": "^4.8.3",
+    "react": "19.2.4",
+    "react-dom": "19.2.4"
+  },
+  "devDependencies": {
+    "@dotenvx/dotenvx": "^1.57.1",
+    "@graphql-codegen/cli": "^6.2.1",
+    "@graphql-codegen/client-preset": "^5.2.4",
+    "@hey-api/openapi-ts": "^0.94.4",
+    "@tailwindcss/postcss": "^4",
+    "@types/node": "^20",
+    "@types/react": "^19",
+    "@types/react-dom": "^19",
+    "eslint": "^9",
+    "eslint-config-next": "16.2.1",
+    "tailwindcss": "^4",
+    "typescript": "^5"
+  }
+}

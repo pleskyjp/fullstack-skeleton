@@ -1,0 +1,93 @@
+columnSuffix: null
+handle: articleContent
+instructions: null
+name: 'Article Content'
+searchable: false
+settings:
+  createButtonLabel: null
+  defaultIndexViewMode: cards
+  enableVersioning: false
+  entryTypes:
+    -
+      __assoc__:
+        -
+          - uid
+          - 748fc41f-0465-45e3-9f24-282bdc4577da
+        -
+          - group
+          - Obecné
+    -
+      __assoc__:
+        -
+          - uid
+          - 8875eb25-eb58-46e5-9287-c9764322e987
+        -
+          - group
+          - Obecné
+    -
+      __assoc__:
+        -
+          - uid
+          - 795425ba-31fd-4bcf-a551-4d870fb2cac0
+        -
+          - group
+          - Obecné
+    -
+      __assoc__:
+        -
+          - uid
+          - 15f9ffe2-1d90-4733-aafb-6cd8c449d5be
+        -
+          - group
+          - Obecné
+    -
+      __assoc__:
+        -
+          - uid
+          - c95a029d-6a8d-48d9-8339-5c329f269b75
+        -
+          - group
+          - Obecné
+    -
+      __assoc__:
+        -
+          - uid
+          - ce684e86-34c3-491d-a50b-1bb57c65ab84
+        -
+          - group
+          - Obecné
+    -
+      __assoc__:
+        -
+          - uid
+          - 13f51dab-9409-41c2-9334-089f677f4d30
+        -
+          - group
+          - Obecné
+    -
+      __assoc__:
+        -
+          - uid
+          - 8857dfb9-ebfb-4388-8540-8b00e1823335
+        -
+          - group
+          - Obecné
+    -
+      __assoc__:
+        -
+          - uid
+          - 1963428b-e186-4a73-bde3-d874d2093d16
+        -
+          - group
+          - Obecné
+  includeTableView: false
+  maxEntries: null
+  minEntries: null
+  pageSize: 50
+  propagationKeyFormat: null
+  propagationMethod: all
+  showCardsInGrid: false
+  viewMode: cards
+translationKeyFormat: null
+translationMethod: site
+type: craft\fields\Matrix

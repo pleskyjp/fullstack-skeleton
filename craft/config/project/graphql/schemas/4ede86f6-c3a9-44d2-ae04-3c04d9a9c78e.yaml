@@ -1,0 +1,10 @@
+isPublic: true
+name: 'Public Schema'
+scope:
+  - 'sites.f76f495a-e551-493f-9e20-63b8c365295a:read'
+  - 'sections.cfa280f8-b6b2-4f4d-b510-8e67db746877:read'
+  - 'nestedentryfields.98750458-2bc0-4c31-a8e9-389c9ff9c5ed:read'
+  - 'nestedentryfields.f7b7a541-c9f5-4740-9dbc-61f35abb38cb:read'
+  - 'volumes.fd6ea6ca-8753-478e-a113-eca56ab2b6f9:read'
+  - 'volumes.fa7f758e-83f3-408f-bf63-86830b12bc6e:read'
+  - 'categorygroups.d535496a-19b9-4c0b-8888-71ca78974860:read'

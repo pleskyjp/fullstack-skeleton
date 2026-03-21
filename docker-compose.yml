@@ -1,0 +1,76 @@
+services:
+  caddy:
+    image: caddy:2-alpine
+    ports:
+      - "80:80"
+      - "443:443"
+    volumes:
+      - ./docker/caddy/Caddyfile:/etc/caddy/Caddyfile
+      - ./craft/web:/srv/craft/web
+      - caddy_data:/data
+    depends_on:
+      - app
+      - api
+      - craft-php
+    networks:
+      default:
+        aliases:
+          - app.localhost
+          - api.localhost
+          - craft.localhost
+          - craft-internal
+
+  db:
+    image: postgres:17-alpine
+    ports:
+      - "5432:5432"
+    volumes:
+      - pgdata:/var/lib/postgresql/data
+      - ./docker/db/init.sql:/docker-entrypoint-initdb.d/init.sql
+    environment:
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: postgres
+      POSTGRES_DB: database
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U postgres"]
+      interval: 2s
+      timeout: 5s
+      retries: 10
+
+  api:
+    build: ./api
+    volumes:
+      - ./api:/app
+      - api_node_modules:/app/node_modules
+    environment:
+      NODE_ENV: dev
+    depends_on:
+      db:
+        condition: service_healthy
+
+  app:
+    build: ./app
+    volumes:
+      - ./app:/app
+      - app_node_modules:/app/node_modules
+    environment:
+      NODE_ENV: dev
+      NODE_TLS_REJECT_UNAUTHORIZED: "0"
+    depends_on:
+      - api
+
+  craft-php:
+    build: ./craft
+    volumes:
+      - ./craft:/srv/app
+      - craft_vendor:/srv/app/vendor
+    depends_on:
+      db:
+        condition: service_healthy
+
+volumes:
+  caddy_data:
+  pgdata:
+  api_node_modules:
+  app_node_modules:
+  craft_vendor:

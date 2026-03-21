@@ -1,0 +1,42 @@
+# TLS reverse proxy for worktree web containers
+# Processed by nginx:alpine envsubst on startup — only DEFINED env vars are substituted,
+# nginx vars ($remote_addr, $http_upgrade etc.) stay intact automatically.
+#
+# Env vars from docker-compose.base.yml:
+#   WORKTREE_CONTAINER — target Nuxt container name (e.g. vlci-272-web)
+#   WT_DOMAIN          — project domain (e.g. vlastnici.dsdev.digital)
+#   WT_NUXT_PORT       — Nuxt dev server port (e.g. 3000)
+
+# WebSocket upgrade map — required for Nuxt HMR (hot module replacement)
+map $http_upgrade $connection_upgrade {
+    default upgrade;
+    ''      close;
+}
+
+server {
+    listen 443 ssl;
+    server_name ${WT_DOMAIN};
+
+    ssl_certificate     /etc/nginx/certs/shared.crt;
+    ssl_certificate_key /etc/nginx/certs/shared.key;
+
+    location / {
+        # Forward to Nuxt dev server — Docker DNS resolves container name within main_network
+        proxy_pass http://${WORKTREE_CONTAINER}:${WT_NUXT_PORT};
+
+        # Nuxt sees the request as coming from the project domain, not the container name
+        proxy_set_header Host              ${WT_DOMAIN};
+        proxy_set_header X-Real-IP         $remote_addr;
+        proxy_set_header X-Forwarded-For   $proxy_add_x_forwarded_for;
+        proxy_set_header X-Forwarded-Proto https;
+
+        # WebSocket support for HMR
+        proxy_http_version 1.1;
+        proxy_set_header Upgrade    $http_upgrade;
+        proxy_set_header Connection $connection_upgrade;
+
+        # 24h timeouts — dev server holds long-lived WebSocket connections for HMR
+        proxy_read_timeout 86400s;
+        proxy_send_timeout 86400s;
+    }
+}

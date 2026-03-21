@@ -1,0 +1,12 @@
+# Worktree web container — fullstack-skeleton-specific compose override
+# Merged with .worktree/docker/docker-compose.base.yml by docker compose.
+
+services:
+  web:
+    volumes:
+      - ${MAIN_REPO_ROOT}/openapi:/app/openapi:ro
+    environment:
+      NODE_ENV: dev
+      NODE_TLS_REJECT_UNAUTHORIZED: "0"
+      NEXT_PUBLIC_CRAFT_GRAPHQL_URL: http://craft-internal/api
+      NEXT_PUBLIC_API_URL: https://api.localhost

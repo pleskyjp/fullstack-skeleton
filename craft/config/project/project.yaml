@@ -1,0 +1,77 @@
+dateModified: 1774201011
+email:
+  fromEmail: admin@example.com
+  fromName: 'Fullstack Skeleton'
+  transportType: craft\mail\transportadapters\Sendmail
+fs:
+  authorImages:
+    hasUrls: true
+    name: 'Author Images'
+    settings:
+      path: '@webroot/assets/images/authors'
+    type: craft\fs\Local
+    url: '@web/assets/images/authors'
+  blogImages:
+    hasUrls: true
+    name: 'Blog Images'
+    settings:
+      path: '@webroot/assets/images/blog'
+    type: craft\fs\Local
+    url: '@web/assets/images/blog'
+meta:
+  __names__:
+    1e9d26cd-874a-458d-871a-a0f3427f11ec: Text
+    4a482f47-5f81-4d7f-b74b-bf0e812a5e02: 'Is Featured'
+    4ede86f6-c3a9-44d2-ae04-3c04d9a9c78e: 'Public Schema'
+    6b4814f6-cb71-4ef4-b8aa-6161040daf31: 'Featured Image'
+    6d21964d-ade2-488d-bf27-ba679b83d586: Items
+    8ca35c29-3954-4faa-95bd-08f132b4cc12: 'Blog Article'
+    13f51dab-9409-41c2-9334-089f677f4d30: 'Image with Caption'
+    15f9ffe2-1d90-4733-aafb-6cd8c449d5be: 'Bullet List'
+    2e0e33d6-d7b8-4c00-85b0-acdda95f4b6c: 'Fullstack Skeleton'
+    31db5bdb-2ceb-4dd9-b4ce-dcd2d6962a79: 'Author Name'
+    99e357df-5efc-4d83-a363-f3a50d8da87c: 'Blog Category'
+    140dc658-d74c-451a-bfd1-412067b169c5: Photo
+    344c9bbf-4ec8-4172-bf98-b881e36979a5: 'Video URL'
+    748fc41f-0465-45e3-9f24-282bdc4577da: Heading
+    1309ea07-3570-4b45-8dc5-42c135e49933: Caption
+    6327c31a-9322-41ac-a0b5-2273e4d3c149: Position
+    8857dfb9-ebfb-4388-8540-8b00e1823335: 'YouTube Embed'
+    8875eb25-eb58-46e5-9287-c9764322e987: 'Text Block'
+    128426ec-ffd1-4757-bf33-bdb7cc9dc82e: Simple
+    795425ba-31fd-4bcf-a551-4d870fb2cac0: Checklist
+    1963428b-e186-4a73-bde3-d874d2093d16: 'Author Card'
+    98750458-2bc0-4c31-a8e9-389c9ff9c5ed: Body
+    a7c00aa3-5efd-4b44-8fc1-a0011dd108ce: Image
+    b252c318-05d0-4f7e-9b5a-c8012e9c9382: 'Meta Description'
+    bdd4fd3c-0444-4af4-9781-15d8219823fa: 'Author Photo'
+    c7cb6570-fd66-41b6-8e34-775319a4dbd6: 'Author Position'
+    c95a029d-6a8d-48d9-8339-5c329f269b75: 'Numbered List'
+    cdec8892-88d6-451d-b181-dc896f273f1f: Bio
+    ce684e86-34c3-491d-a50b-1bb57c65ab84: Quote
+    cf482849-0e47-4c77-9e17-ef5ff1e95c19: 'Meta Title'
+    cfa280f8-b6b2-4f4d-b510-8e67db746877: Blog
+    d535496a-19b9-4c0b-8888-71ca78974860: 'Blog Categories'
+    f76f495a-e551-493f-9e20-63b8c365295a: 'Fullstack Skeleton'
+    f7b7a541-c9f5-4740-9dbc-61f35abb38cb: 'Article Content'
+    f7d966e1-b482-44ee-a390-911d2a1d435b: Perex
+    fa7f758e-83f3-408f-bf63-86830b12bc6e: 'Author Images'
+    fd6ea6ca-8753-478e-a113-eca56ab2b6f9: 'Blog Images'
+plugins:
+  ckeditor:
+    edition: standard
+    enabled: true
+    schemaVersion: 3.0.0.0
+system:
+  edition: solo
+  live: true
+  name: 'Fullstack Skeleton'
+  schemaVersion: 5.9.0.8
+  timeZone: America/Los_Angeles
+users:
+  allowPublicRegistration: false
+  defaultGroup: null
+  photoSubpath: null
+  photoVolumeUid: null
+  require2fa: false
+  requireEmailVerification: true

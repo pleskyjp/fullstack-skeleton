@@ -1,0 +1,25 @@
+app.localhost {
+	reverse_proxy app:3000
+}
+
+api.localhost {
+	reverse_proxy api:4000
+}
+
+http://craft-internal:80 {
+	root * /srv/craft/web
+	php_fastcgi craft-php:9000 {
+		root /srv/app/web
+	}
+	file_server
+}
+
+craft.localhost {
+	redir / /admin permanent
+	root * /srv/craft/web
+	php_fastcgi craft-php:9000 {
+		root /srv/app/web
+	}
+	file_server
+	encode zstd gzip
+}

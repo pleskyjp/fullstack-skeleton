@@ -1,0 +1,41 @@
+{
+  "name": "fullstack-skeleton-api",
+  "version": "0.1.0",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "dev": "dotenvx run --convention=flow -- tsx watch src/index.ts",
+    "build": "tsc",
+    "start": "dotenvx run --convention=flow -- node dist/index.js",
+    "lint": "eslint src/",
+    "gen:spec": "tsx src/scripts/generateSpec.ts",
+    "db:migrate": "dotenvx run --convention=flow -- prisma migrate deploy",
+    "db:seed": "dotenvx run --convention=flow -- tsx prisma/seed.ts",
+    "secrets-setup": "node scripts/setup-dev.js"
+  },
+  "dependencies": {
+    "@asteasolutions/zod-to-openapi": "^8.5.0",
+    "@prisma/client": "^6.9.0",
+    "cors": "^2.8.5",
+    "express": "^5.1.0",
+    "yaml": "^2.8.3",
+    "zod": "^4.3.6"
+  },
+  "devDependencies": {
+    "@dotenvx/dotenvx": "^1.57.1",
+    "@types/cors": "^2.8.17",
+    "@types/express": "^5.0.0",
+    "@types/node": "^22.0.0",
+    "prisma": "^6.9.0",
+    "tsx": "^4.19.0",
+    "typescript": "^5.9.0"
+  },
+  "pnpm": {
+    "onlyBuiltDependencies": [
+      "@prisma/client",
+      "@prisma/engines",
+      "prisma",
+      "esbuild"
+    ]
+  }
+}

@@ -1,0 +1,70 @@
+color: null
+description: null
+fieldLayouts:
+  f238b523-dd00-434c-be35-3a19a7a77947:
+    cardThumbAlignment: end
+    tabs:
+      -
+        elementCondition: null
+        elements:
+          -
+            autocapitalize: true
+            autocomplete: false
+            autocorrect: true
+            class: null
+            dateAdded: '2026-03-17T13:20:42+00:00'
+            disabled: false
+            elementCondition: null
+            id: null
+            includeInCards: false
+            inputType: null
+            instructions: null
+            label: null
+            max: null
+            min: null
+            name: null
+            orientation: null
+            placeholder: null
+            providesThumbs: false
+            readonly: false
+            required: true
+            size: null
+            step: null
+            tip: null
+            title: null
+            type: craft\fieldlayoutelements\entries\EntryTitleField
+            uid: 4207f70f-ab6b-4b6c-ab8a-99fd7277bd85
+            userCondition: null
+            warning: null
+            width: 100
+          -
+            dateAdded: '2026-03-17T13:38:36+00:00'
+            editCondition: null
+            elementCondition: null
+            fieldUid: 1e9d26cd-874a-458d-871a-a0f3427f11ec
+            handle: null
+            includeInCards: false
+            instructions: null
+            label: null
+            providesThumbs: false
+            required: false
+            tip: null
+            type: craft\fieldlayoutelements\CustomField
+            uid: 65f9968e-224a-4162-94d5-a53d1abdde68
+            userCondition: null
+            warning: null
+            width: 100
+        name: Obsah
+        uid: 92518ef4-64a3-4d9d-a228-521d592fa2ec
+        userCondition: null
+handle: heading
+hasTitleField: true
+icon: null
+name: Heading
+showSlugField: true
+showStatusField: true
+slugTranslationKeyFormat: null
+slugTranslationMethod: site
+titleFormat: null
+titleTranslationKeyFormat: null
+titleTranslationMethod: site

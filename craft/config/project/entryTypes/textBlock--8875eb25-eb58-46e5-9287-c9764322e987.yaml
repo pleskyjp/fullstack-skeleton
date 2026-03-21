@@ -1,0 +1,70 @@
+color: null
+description: null
+fieldLayouts:
+  c438c0d4-82bc-4002-a687-a30dd662e7f7:
+    cardThumbAlignment: end
+    tabs:
+      -
+        elementCondition: null
+        elements:
+          -
+            autocapitalize: true
+            autocomplete: false
+            autocorrect: true
+            class: null
+            dateAdded: '2026-03-17T13:21:26+00:00'
+            disabled: false
+            elementCondition: null
+            id: null
+            includeInCards: false
+            inputType: null
+            instructions: null
+            label: null
+            max: null
+            min: null
+            name: null
+            orientation: null
+            placeholder: null
+            providesThumbs: false
+            readonly: false
+            required: true
+            size: null
+            step: null
+            tip: null
+            title: null
+            type: craft\fieldlayoutelements\entries\EntryTitleField
+            uid: 33119df9-b323-411f-8628-e29dc67a6367
+            userCondition: null
+            warning: null
+            width: 100
+          -
+            dateAdded: '2026-03-17T13:42:37+00:00'
+            editCondition: null
+            elementCondition: null
+            fieldUid: 98750458-2bc0-4c31-a8e9-389c9ff9c5ed
+            handle: null
+            includeInCards: false
+            instructions: null
+            label: null
+            providesThumbs: false
+            required: false
+            tip: null
+            type: craft\fieldlayoutelements\CustomField
+            uid: 44e80d37-895c-4c77-9e17-e6c60fc9c578
+            userCondition: null
+            warning: null
+            width: 100
+        name: Obsah
+        uid: e31f1e43-a43c-4a4e-9d5b-0058d5ae44e9
+        userCondition: null
+handle: textBlock
+hasTitleField: true
+icon: null
+name: 'Text Block'
+showSlugField: true
+showStatusField: true
+slugTranslationKeyFormat: null
+slugTranslationMethod: site
+titleFormat: null
+titleTranslationKeyFormat: null
+titleTranslationMethod: site

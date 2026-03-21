@@ -1,0 +1,16 @@
+defaultPlacement: end
+enableVersioning: true
+entryTypes:
+  -
+    uid: 8ca35c29-3954-4faa-95bd-08f132b4cc12
+handle: blog
+maxAuthors: 1
+name: Blog
+propagationMethod: all
+siteSettings:
+  f76f495a-e551-493f-9e20-63b8c365295a:
+    enabledByDefault: true
+    hasUrls: true
+    template: blog/_entry.twig
+    uriFormat: 'blog/{slug}'
+type: channel

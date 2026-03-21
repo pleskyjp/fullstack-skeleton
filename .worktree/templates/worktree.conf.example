@@ -1,0 +1,22 @@
+# Worktree web container configuration
+# Copy to .worktree.conf and adjust values for your project.
+# Sourced by .worktree/scripts/worktree-web.sh — all values required unless noted.
+#
+# Example for a project "adel-stormm" with AD-123 issue pattern:
+#   WT_PROJECT_NAME="adel-stormm"
+#   WT_DOMAIN="nuxt-adel.stormm.localhost"
+#   WT_ISSUE_PATTERN="AD-[0-9]+"
+#   WT_PORT_BASE=5000
+#   WT_WEB_SUBDIR="app_new"
+#   WT_NETWORK="adel-stormm_default"
+
+WT_PROJECT_NAME=""                   # Compose project prefix (e.g. "vlastnici")
+WT_DOMAIN=""                         # TLS proxy domain (e.g. "vlastnici.dsdev.digital")
+WT_ISSUE_PATTERN=""                  # Branch regex for slug/port (e.g. "VLCI-[0-9]+")
+WT_PORT_BASE=10000                   # Port = base + issue number
+WT_WEB_SUBDIR="web"                 # Nuxt app subdir within worktree
+WT_NETWORK=""                        # Main stack Docker network (e.g. "myapp_default")
+
+# Optional (defaults shown)
+# WT_NUXT_PORT=3000                  # Nuxt dev server port inside container
+# WT_CERTS_DIR="${HOME}/.config/dev-proxy/certs"  # TLS certificate directory

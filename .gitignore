@@ -1,0 +1,38 @@
+# dependencies
+node_modules
+
+# build output
+dist
+.next
+/out
+
+# misc
+.DS_Store
+*.pem
+
+# debug
+*.log
+
+# dotenvx — encrypted env files ARE committed, keys are NOT
+.env.keys
+.env.local
+/.env
+
+# playwright / e2e
+.playwright-cli
+e2e/results
+e2e/test-results
+
+# caddy root CA cert (generated, not committed)
+caddy-root.crt
+
+# typescript
+*.tsbuildinfo
+next-env.d.ts
+
+# craft
+craft/vendor
+craft/storage/runtime
+craft/storage/logs
+craft/web/cpresources
+/worktrees
