@@ -1,21 +1,16 @@
 import { prisma } from '../../lib/prisma.js';
+import type { CreateNote, UpdateNote } from './notes.schema.js';
 
 export const notesRepository = {
-  findAll: () =>
-    prisma.note.findMany({ orderBy: { createdAt: 'desc' } }),
+  findAll: () => prisma.note.findMany({ orderBy: { createdAt: 'desc' } }),
 
-  count: () =>
-    prisma.note.count(),
+  count: () => prisma.note.count(),
 
-  findById: (id: string) =>
-    prisma.note.findUnique({ where: { id } }),
+  findById: (id: string) => prisma.note.findUnique({ where: { id } }),
 
-  create: (data: { title: string; content: string; completed: boolean }) =>
-    prisma.note.create({ data }),
+  create: (data: CreateNote) => prisma.note.create({ data }),
 
-  update: (id: string, data: { title?: string; content?: string; completed?: boolean }) =>
-    prisma.note.update({ where: { id }, data }),
+  update: (id: string, data: UpdateNote) => prisma.note.update({ where: { id }, data }),
 
-  delete: (id: string) =>
-    prisma.note.delete({ where: { id } }),
+  delete: (id: string) => prisma.note.delete({ where: { id } }),
 };

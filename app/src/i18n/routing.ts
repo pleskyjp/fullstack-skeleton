@@ -1,4 +1,5 @@
 import { defineRouting } from 'next-intl/routing';
+
 import { DEFAULT_LOCALE, SUPPORTED_LOCALES } from './config';
 
 export const routing = defineRouting({

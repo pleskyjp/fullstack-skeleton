@@ -1,6 +1,5 @@
+import { extendZodWithOpenApi, type OpenAPIRegistry } from '@asteasolutions/zod-to-openapi';
 import { z } from 'zod/v4';
-import { extendZodWithOpenApi } from '@asteasolutions/zod-to-openapi';
-import type { OpenAPIRegistry } from '@asteasolutions/zod-to-openapi';
 
 extendZodWithOpenApi(z);
 
@@ -44,8 +43,6 @@ export const registerNoteRoutes = (registry: OpenAPIRegistry) => {
   registry.register('UpdateNote', UpdateNoteSchema);
   registry.register('NoteList', NoteListSchema);
   registry.register('Error', ErrorSchema);
-
-  const noteIdParam = NoteSchema.shape.id.openapi({ param: { name: 'id', in: 'path' } });
 
   registry.registerPath({
     method: 'get',

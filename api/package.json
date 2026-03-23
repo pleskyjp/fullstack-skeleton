@@ -7,7 +7,12 @@
     "dev": "dotenvx run --convention=flow -- tsx watch src/index.ts",
     "build": "tsc",
     "start": "dotenvx run --convention=flow -- node dist/index.js",
-    "lint": "eslint src/",
+    "format:check": "prettier --check .",
+    "format:fix": "prettier --write .",
+    "lint:check": "eslint .",
+    "lint:fix": "eslint --fix .",
+    "lint": "pnpm format:check && pnpm lint:check",
+    "fix": "pnpm format:fix && pnpm lint:fix",
     "gen:spec": "tsx src/scripts/generateSpec.ts",
     "db:migrate": "dotenvx run --convention=flow -- prisma migrate deploy",
     "db:seed": "dotenvx run --convention=flow -- tsx prisma/seed.ts",
@@ -23,12 +28,19 @@
   },
   "devDependencies": {
     "@dotenvx/dotenvx": "^1.57.1",
+    "@eslint/js": "^10.0.1",
+    "@ianvs/prettier-plugin-sort-imports": "^4.7.1",
     "@types/cors": "^2.8.17",
     "@types/express": "^5.0.0",
     "@types/node": "^22.0.0",
+    "eslint": "^10.1.0",
+    "eslint-config-prettier": "^10.1.8",
+    "globals": "^17.4.0",
+    "prettier": "^3.8.1",
     "prisma": "^6.9.0",
     "tsx": "^4.19.0",
-    "typescript": "^5.9.0"
+    "typescript": "^5.9.0",
+    "typescript-eslint": "^8.57.1"
   },
   "pnpm": {
     "onlyBuiltDependencies": [

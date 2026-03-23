@@ -1,4 +1,5 @@
 import { Router } from 'express';
+
 import { validate } from '../../common/middleware/validate.js';
 import { CreateNoteSchema, UpdateNoteSchema } from './notes.schema.js';
 import { notesService } from './notes.service.js';

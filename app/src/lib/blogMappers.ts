@@ -1,6 +1,6 @@
 import type {
-  BlogArticleDetailQuery,
   BlogArticleDetailNoContentQuery,
+  BlogArticleDetailQuery,
   BlogArticlesQuery,
 } from '@/graphql/generated/graphql';
 import type { BlogArticle, BlogArticleDetail, BlogCategory, BlogContentBlock } from '@/models/blog';
@@ -11,7 +11,10 @@ export type CraftBlogEntry = Extract<
 >;
 
 type DetailBlogEntry = Extract<NonNullable<BlogArticleDetailQuery['entry']>, { __typename: 'blogArticle_Entry' }>;
-type NoContentBlogEntry = Extract<NonNullable<BlogArticleDetailNoContentQuery['entry']>, { __typename: 'blogArticle_Entry' }>;
+type NoContentBlogEntry = Extract<
+  NonNullable<BlogArticleDetailNoContentQuery['entry']>,
+  { __typename: 'blogArticle_Entry' }
+>;
 
 const EMPTY_CATEGORY: BlogCategory = { id: '', name: '', slug: '' };
 const BLOG_ENTRY_TYPE = 'blogArticle_Entry' as const;

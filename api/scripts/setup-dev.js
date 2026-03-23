@@ -29,7 +29,7 @@ const promptForKey = async () => {
   });
 };
 
-const validateKey = (privateKey) => {
+const validateKey = privateKey => {
   if (!privateKey) {
     error('No key provided');
     return false;
@@ -43,7 +43,7 @@ const validateKey = (privateKey) => {
   return true;
 };
 
-const saveKey = (privateKey) => {
+const saveKey = privateKey => {
   const content = `#/------------------!DOTENV_PRIVATE_KEYS!-------------------/
 #/ private decryption keys. DO NOT commit to source control /
 #/     [how it works](https://dotenvx.com/encryption)       /

@@ -1,6 +1,7 @@
 import type { ErrorRequestHandler } from 'express';
-import { AppError } from '../errors.js';
+
 import { t } from '../../i18n/t.js';
+import { AppError } from '../errors.js';
 
 export const errorHandler: ErrorRequestHandler = (err, req, res, _next) => {
   const locale = req.locale ?? 'cs';

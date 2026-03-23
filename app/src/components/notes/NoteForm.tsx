@@ -1,5 +1,5 @@
-import { useState, type FormEvent } from 'react';
 import { useTranslations } from 'next-intl';
+import { useState, type FormEvent } from 'react';
 
 type Props = {
   onSubmit: (title: string, content: string) => Promise<void>;
@@ -26,21 +26,27 @@ export const NoteForm = ({ onSubmit }: Props) => {
   };
 
   return (
-    <form onSubmit={handleSubmit} className="mb-6 rounded-lg border border-gray-200 bg-white p-4 shadow-sm">
+    <form
+      onSubmit={handleSubmit}
+      aria-label={t('createNote')}
+      className="mb-6 rounded-lg border border-gray-200 bg-white p-4 shadow-sm"
+    >
       <input
         type="text"
         placeholder={t('titlePlaceholder')}
+        aria-label={t('titlePlaceholder')}
         value={title}
         onChange={e => setTitle(e.target.value)}
-        className="mb-3 w-full rounded-md border border-gray-300 px-3 py-2 text-sm focus:border-transparent focus:outline-none focus:ring-2 focus:ring-blue-500"
+        className="mb-3 w-full rounded-md border border-gray-300 px-3 py-2 text-sm focus:border-transparent focus:ring-2 focus:ring-blue-500 focus:outline-none"
         maxLength={200}
         required
       />
       <textarea
         placeholder={t('contentPlaceholder')}
+        aria-label={t('contentPlaceholder')}
         value={content}
         onChange={e => setContent(e.target.value)}
-        className="mb-3 w-full resize-none rounded-md border border-gray-300 px-3 py-2 text-sm focus:border-transparent focus:outline-none focus:ring-2 focus:ring-blue-500"
+        className="mb-3 w-full resize-none rounded-md border border-gray-300 px-3 py-2 text-sm focus:border-transparent focus:ring-2 focus:ring-blue-500 focus:outline-none"
         rows={3}
         required
       />

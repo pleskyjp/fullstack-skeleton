@@ -1,6 +1,7 @@
 import type { RequestHandler } from 'express';
-import { resolveLocale } from './t.js';
+
 import type { Locale } from './config.js';
+import { resolveLocale } from './t.js';
 
 declare global {
   namespace Express {

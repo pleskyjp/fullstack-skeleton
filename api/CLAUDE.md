@@ -43,12 +43,12 @@ src/
 
 Each module (`modules/<name>/`) contains four files:
 
-| File | Purpose |
-|------|---------|
-| `<name>.router.ts` | Express router, HTTP concerns only |
-| `<name>.service.ts` | Business logic, throws `AppError` on failures |
-| `<name>.repository.ts` | Prisma queries, data access only |
-| `<name>.schema.ts` | Zod schemas, types, and OpenAPI route registration |
+| File                   | Purpose                                            |
+| ---------------------- | -------------------------------------------------- |
+| `<name>.router.ts`     | Express router, HTTP concerns only                 |
+| `<name>.service.ts`    | Business logic, throws `AppError` on failures      |
+| `<name>.repository.ts` | Prisma queries, data access only                   |
+| `<name>.schema.ts`     | Zod schemas, types, and OpenAPI route registration |
 
 Schemas serve double duty: runtime validation via `validate()` middleware and OpenAPI spec generation via `registerNoteRoutes(registry)`.
 

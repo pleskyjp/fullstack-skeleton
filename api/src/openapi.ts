@@ -1,4 +1,5 @@
-import { OpenAPIRegistry, OpenApiGeneratorV31 } from '@asteasolutions/zod-to-openapi';
+import { OpenApiGeneratorV31, OpenAPIRegistry } from '@asteasolutions/zod-to-openapi';
+
 import { registerNoteRoutes } from './modules/notes/notes.schema.js';
 
 const registry = new OpenAPIRegistry();

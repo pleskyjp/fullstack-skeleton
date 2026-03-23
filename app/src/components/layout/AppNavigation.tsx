@@ -1,8 +1,9 @@
 'use client';
 
-import { useTranslations, useLocale } from 'next-intl';
-import { Link, usePathname, useRouter } from '@/i18n/navigation';
+import { useLocale, useTranslations } from 'next-intl';
+
 import type { Locale } from '@/i18n/config';
+import { Link, usePathname, useRouter } from '@/i18n/navigation';
 
 const NAV_ITEMS = [
   { href: '/' as const, labelKey: 'nav.home' },
@@ -18,16 +19,16 @@ export const AppNavigation = () => {
   const pathname = usePathname();
   const router = useRouter();
 
-  const isActive = (href: string) =>
-    href === '/' ? pathname === '/' : pathname.startsWith(href);
+  const isActive = (href: string) => (href === '/' ? pathname === '/' : pathname.startsWith(href));
 
-  const switchLocale = (newLocale: Locale) =>
-    router.replace(pathname, { locale: newLocale });
+  const switchLocale = (newLocale: Locale) => router.replace(pathname, { locale: newLocale });
 
   return (
     <header className="border-b border-gray-200 bg-white">
       <nav className="mx-auto flex h-14 max-w-6xl items-center gap-6 px-4">
-        <Link href="/" className="text-lg font-bold text-gray-900">{t('app.name')}</Link>
+        <Link href="/" className="text-lg font-bold text-gray-900">
+          {t('app.name')}
+        </Link>
         <div className="flex gap-4">
           {NAV_ITEMS.map(({ href, labelKey }) => (
             <Link

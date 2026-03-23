@@ -12,17 +12,13 @@ const assertNoteExists = async (id: string) => {
 
 export const notesService = {
   list: async () => {
-    const [items, total] = await Promise.all([
-      notesRepository.findAll(),
-      notesRepository.count(),
-    ]);
+    const [items, total] = await Promise.all([notesRepository.findAll(), notesRepository.count()]);
     return { items, total };
   },
 
   getById: (id: string) => assertNoteExists(id),
 
-  create: (data: CreateNote) =>
-    notesRepository.create(data),
+  create: (data: CreateNote) => notesRepository.create(data),
 
   update: async (id: string, data: UpdateNote) => {
     await assertNoteExists(id);

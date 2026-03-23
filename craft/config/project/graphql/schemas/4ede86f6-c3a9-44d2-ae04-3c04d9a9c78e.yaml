@@ -1,7 +1,7 @@
 isPublic: true
 name: 'Public Schema'
 scope:
-  - 'sites.f76f495a-e551-493f-9e20-63b8c365295a:read'
+  - 'sites.aabab36c-4448-4cd1-bb6e-1a4d7a7cf3f7:read'
   - 'sections.cfa280f8-b6b2-4f4d-b510-8e67db746877:read'
   - 'nestedentryfields.98750458-2bc0-4c31-a8e9-389c9ff9c5ed:read'
   - 'nestedentryfields.f7b7a541-c9f5-4740-9dbc-61f35abb38cb:read'

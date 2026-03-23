@@ -20,7 +20,7 @@ const checkExistingSetup = () => {
   }
 };
 
-const promptForKey = async (keyName) => {
+const promptForKey = async keyName => {
   const rl = readline.createInterface({ input: process.stdin, output: process.stdout });
 
   return new Promise(resolve => {
@@ -31,7 +31,7 @@ const promptForKey = async (keyName) => {
   });
 };
 
-const validateKey = (privateKey) => {
+const validateKey = privateKey => {
   if (!privateKey) {
     error('No key provided');
     return false;
@@ -45,13 +45,15 @@ const validateKey = (privateKey) => {
   return true;
 };
 
-const saveKeys = (keys) => {
+const saveKeys = keys => {
   const content = `#/------------------!DOTENV_PRIVATE_KEYS!-------------------/
 #/ private decryption keys. DO NOT commit to source control /
 #/     [how it works](https://dotenvx.com/encryption)       /
 #/----------------------------------------------------------/
 
-${Object.entries(keys).map(([k, v]) => `${k}=${v}`).join('\n')}
+${Object.entries(keys)
+  .map(([k, v]) => `${k}=${v}`)
+  .join('\n')}
 `;
   fs.writeFileSync('.env.keys', content);
   success('Private keys saved to .env.keys');

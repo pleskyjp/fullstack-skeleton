@@ -3,9 +3,10 @@ import cs from './messages/cs.js';
 import en from './messages/en.js';
 
 type Messages = typeof cs;
-type FlatKeys<T, P extends string = ''> = T extends Record<string, unknown>
-  ? { [K in keyof T]: FlatKeys<T[K], P extends '' ? `${K & string}` : `${P}.${K & string}`> }[keyof T]
-  : P;
+type FlatKeys<T, P extends string = ''> =
+  T extends Record<string, unknown>
+    ? { [K in keyof T]: FlatKeys<T[K], P extends '' ? `${K & string}` : `${P}.${K & string}`> }[keyof T]
+    : P;
 
 type MessageKey = FlatKeys<Messages>;
 
@@ -18,7 +19,10 @@ const getNestedValue = (obj: Record<string, unknown>, path: string): string => {
 
 export const t = (locale: Locale, key: MessageKey, params?: Record<string, string>): string => {
   let result = getNestedValue(messages[locale] as unknown as Record<string, unknown>, key);
-  if (params) Object.entries(params).forEach(([k, v]) => { result = result.replace(`{${k}}`, v); });
+  if (params)
+    Object.entries(params).forEach(([k, v]) => {
+      result = result.replace(`{${k}}`, v);
+    });
   return result;
 };
 

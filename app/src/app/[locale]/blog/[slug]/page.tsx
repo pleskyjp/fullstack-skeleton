@@ -1,26 +1,27 @@
 import type { Metadata } from 'next';
+import { getTranslations } from 'next-intl/server';
 import Image from 'next/image';
-import Link from 'next/link';
-import {
-  BlogArticleDetailDocument,
-  BlogRelatedArticlesDocument,
-} from '@/graphql/generated/graphql';
-import { craftQuery } from '@/lib/craftClient';
-import { extractBlogEntry, mapCraftBlogEntry, type CraftBlogEntry } from '@/lib/blogMappers';
-import { BLOG_RELATED_LIMIT } from '@/models/blog';
-import { BlogContentRenderer } from '@/components/blog/BlogContentRenderer';
+
 import { BlogCard } from '@/components/blog/BlogCard';
+import { BlogContentRenderer } from '@/components/blog/BlogContentRenderer';
+import { BlogArticleDetailDocument, BlogRelatedArticlesDocument } from '@/graphql/generated/graphql';
+import { Link } from '@/i18n/navigation';
+import { extractBlogEntry, mapCraftBlogEntry, type CraftBlogEntry } from '@/lib/blogMappers';
+import { craftQuery } from '@/lib/craftClient';
+import { BLOG_RELATED_LIMIT } from '@/models/blog';
+import { formatDate } from '@/utils/formatDate';
 
 type Props = {
-  params: Promise<{ slug: string }>;
+  params: Promise<{ slug: string; locale: string }>;
 };
 
 export const generateMetadata = async ({ params }: Props): Promise<Metadata> => {
   const { slug } = await params;
+  const t = await getTranslations('blog');
   const data = await craftQuery(BlogArticleDetailDocument, { slug: [slug] });
   const article = extractBlogEntry(data.entry);
 
-  if (!article) return { title: 'Článek nenalezen' };
+  if (!article) return { title: t('articleNotFound') };
 
   return {
     title: article.metaTitle || article.title,
@@ -28,19 +29,19 @@ export const generateMetadata = async ({ params }: Props): Promise<Metadata> => 
   };
 };
 
-const formatDate = (dateStr: string) =>
-  new Date(dateStr).toLocaleDateString('cs-CZ', { day: 'numeric', month: 'long', year: 'numeric' });
-
 const BlogDetailPage = async ({ params }: Props) => {
   const { slug } = await params;
+  const t = await getTranslations('blog');
   const data = await craftQuery(BlogArticleDetailDocument, { slug: [slug] });
   const article = extractBlogEntry(data.entry);
 
   if (!article) {
     return (
-      <main className="max-w-3xl mx-auto px-4 py-12 text-center">
-        <h1 className="text-2xl font-bold mb-4">Článek nenalezen</h1>
-        <Link href="/blog" className="text-blue-600 hover:underline">Zpět na blog</Link>
+      <main className="mx-auto max-w-3xl px-4 py-12 text-center">
+        <h1 className="mb-4 text-2xl font-bold">{t('articleNotFound')}</h1>
+        <Link href="/blog" className="text-blue-600 hover:underline">
+          {t('backToBlog')}
+        </Link>
       </main>
     );
   }
@@ -60,9 +61,11 @@ const BlogDetailPage = async ({ params }: Props) => {
   }
 
   return (
-    <main className="max-w-3xl mx-auto px-4 py-12">
-      <nav className="flex items-center gap-2 text-sm text-gray-500 mb-8">
-        <Link href="/blog" className="hover:text-blue-600">Blog</Link>
+    <main className="mx-auto max-w-3xl px-4 py-12">
+      <nav className="mb-8 flex items-center gap-2 text-sm text-gray-500">
+        <Link href="/blog" className="hover:text-blue-600">
+          {t('title')}
+        </Link>
         <span>/</span>
         {primaryCategory && (
           <>
@@ -72,41 +75,45 @@ const BlogDetailPage = async ({ params }: Props) => {
             <span>/</span>
           </>
         )}
-        <span className="text-gray-800 truncate">{article.title}</span>
+        <span className="truncate text-gray-800">{article.title}</span>
       </nav>
 
-      <div className="flex flex-wrap gap-2 mb-4">
-        {article.categories.map(cat => (
+      <div className="mb-4 flex flex-wrap gap-2">
+        {article.categories.map(({ id, slug: catSlug, name }) => (
           <Link
-            key={cat.id}
-            href={`/blog?category=${cat.slug}`}
-            className="text-xs font-medium text-blue-600 bg-blue-50 px-3 py-1 rounded-full hover:bg-blue-100"
+            key={id}
+            href={`/blog?category=${catSlug}`}
+            className="rounded-full bg-blue-50 px-3 py-1 text-xs font-medium text-blue-600 hover:bg-blue-100"
           >
-            {cat.name}
+            {name}
           </Link>
         ))}
       </div>
 
-      <h1 className="text-4xl font-bold mb-4">{article.title}</h1>
-      <time className="text-gray-500 text-sm">{formatDate(article.postDate)}</time>
+      <h1 className="mb-4 text-4xl font-bold">{article.title}</h1>
+      <time dateTime={article.postDate} className="text-sm text-gray-500">
+        {formatDate(article.postDate)}
+      </time>
 
       {article.featuredImage && (
-        <Image
-          src={article.featuredImage.url}
-          alt={article.title}
-          width={article.featuredImage.width}
-          height={article.featuredImage.height}
-          className="rounded-xl mt-8 mb-8 w-full"
-          priority
-        />
+        <figure className="my-8">
+          <Image
+            src={article.featuredImage.url}
+            alt={article.title}
+            width={article.featuredImage.width}
+            height={article.featuredImage.height}
+            className="w-full rounded-xl"
+            priority
+          />
+        </figure>
       )}
 
       <div className="mb-12">
         <BlogContentRenderer blocks={article.articleContent} />
       </div>
 
-      <div className="flex gap-3 border-t pt-6 mb-12">
-        <span className="text-sm text-gray-500">Sdílet:</span>
+      <div className="mb-12 flex gap-3 border-t pt-6">
+        <span className="text-sm text-gray-500">{t('share')}:</span>
         <a
           href={`https://www.facebook.com/sharer/sharer.php?u=${encodeURIComponent(`/blog/${article.slug}`)}`}
           target="_blank"
@@ -119,8 +126,8 @@ const BlogDetailPage = async ({ params }: Props) => {
 
       {relatedArticles.length > 0 && (
         <section>
-          <h2 className="text-2xl font-bold mb-6">Související články</h2>
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+          <h2 className="mb-6 text-2xl font-bold">{t('relatedArticles')}</h2>
+          <div className="grid grid-cols-1 gap-6 md:grid-cols-3">
             {relatedArticles.map(related => (
               <BlogCard key={related.id} article={related} />
             ))}

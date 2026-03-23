@@ -1,7 +1,9 @@
 import { useTranslations } from 'next-intl';
+
+import { useNotes } from '@/hooks/useNotes';
+
 import { NoteCard } from './NoteCard';
 import { NoteForm } from './NoteForm';
-import { useNotes } from '@/hooks/useNotes';
 
 export const NoteList = () => {
   const t = useTranslations('notes');

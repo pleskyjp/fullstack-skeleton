@@ -1,12 +1,12 @@
-import { NextIntlClientProvider, hasLocale } from 'next-intl';
-import { notFound } from 'next/navigation';
+import { hasLocale, NextIntlClientProvider } from 'next-intl';
 import { setRequestLocale } from 'next-intl/server';
+import { notFound } from 'next/navigation';
+
+import { AppNavigation } from '@/components/layout/AppNavigation';
 import { SUPPORTED_LOCALES } from '@/i18n/config';
 import { routing } from '@/i18n/routing';
-import { AppNavigation } from '@/components/layout/AppNavigation';
 
-export const generateStaticParams = () =>
-  routing.locales.map(locale => ({ locale }));
+export const generateStaticParams = () => routing.locales.map(locale => ({ locale }));
 
 type Props = {
   children: React.ReactNode;

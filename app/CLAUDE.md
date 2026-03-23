@@ -69,11 +69,13 @@ src/
 ## API Integration
 
 **Express API** (REST):
+
 - Generated client at `src/api/generated/` via hey-api from `/openapi/openapi.yaml`
 - Client config in `src/lib/apiClient.ts`
 - Regenerate after API changes: `pnpm gen:api-client`
 
 **CraftCMS** (GraphQL):
+
 - Query documents in `src/graphql/blogQueries.ts`
 - Generated types at `src/graphql/generated/` via graphql-codegen
 - Client in `src/lib/craftClient.ts`, mappers in `src/lib/blogMappers.ts`

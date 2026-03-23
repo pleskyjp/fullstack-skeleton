@@ -1,4 +1,4 @@
-dateModified: 1774201011
+dateModified: 1774203904
 email:
   fromEmail: admin@example.com
   fromName: 'Fullstack Skeleton'
@@ -28,7 +28,6 @@ meta:
     8ca35c29-3954-4faa-95bd-08f132b4cc12: 'Blog Article'
     13f51dab-9409-41c2-9334-089f677f4d30: 'Image with Caption'
     15f9ffe2-1d90-4733-aafb-6cd8c449d5be: 'Bullet List'
-    2e0e33d6-d7b8-4c00-85b0-acdda95f4b6c: 'Fullstack Skeleton'
     31db5bdb-2ceb-4dd9-b4ce-dcd2d6962a79: 'Author Name'
     99e357df-5efc-4d83-a363-f3a50d8da87c: 'Blog Category'
     140dc658-d74c-451a-bfd1-412067b169c5: Photo
@@ -43,6 +42,8 @@ meta:
     1963428b-e186-4a73-bde3-d874d2093d16: 'Author Card'
     98750458-2bc0-4c31-a8e9-389c9ff9c5ed: Body
     a7c00aa3-5efd-4b44-8fc1-a0011dd108ce: Image
+    ee5b8824-85d6-4138-a465-fe1f416f8033: 'Fullstack Skeleton'
+    aabab36c-4448-4cd1-bb6e-1a4d7a7cf3f7: 'Fullstack Skeleton'
     b252c318-05d0-4f7e-9b5a-c8012e9c9382: 'Meta Description'
     bdd4fd3c-0444-4af4-9781-15d8219823fa: 'Author Photo'
     c7cb6570-fd66-41b6-8e34-775319a4dbd6: 'Author Position'
@@ -52,7 +53,6 @@ meta:
     cf482849-0e47-4c77-9e17-ef5ff1e95c19: 'Meta Title'
     cfa280f8-b6b2-4f4d-b510-8e67db746877: Blog
     d535496a-19b9-4c0b-8888-71ca78974860: 'Blog Categories'
-    f76f495a-e551-493f-9e20-63b8c365295a: 'Fullstack Skeleton'
     f7b7a541-c9f5-4740-9dbc-61f35abb38cb: 'Article Content'
     f7d966e1-b482-44ee-a390-911d2a1d435b: Perex
     fa7f758e-83f3-408f-bf63-86830b12bc6e: 'Author Images'

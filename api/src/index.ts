@@ -1,5 +1,6 @@
 import cors from 'cors';
 import express from 'express';
+
 import { errorHandler } from './common/middleware/errorHandler.js';
 import { localeMiddleware } from './i18n/middleware.js';
 import notesRouter from './modules/notes/notes.router.js';

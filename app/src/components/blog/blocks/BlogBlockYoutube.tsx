@@ -7,7 +7,12 @@ export const BlogBlockYoutube = ({ block }: { block: BlogBlockYoutube }) => {
 
   return (
     <div className="aspect-video">
-      <iframe src={`https://www.youtube.com/embed/${videoId}`} className="h-full w-full rounded-lg" allowFullScreen title="YouTube video" />
+      <iframe
+        src={`https://www.youtube.com/embed/${videoId}`}
+        className="h-full w-full rounded-lg"
+        allowFullScreen
+        title="YouTube video"
+      />
     </div>
   );
 };

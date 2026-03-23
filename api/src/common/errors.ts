@@ -20,6 +20,10 @@ export class AppError extends Error {
   }
 
   static badRequest(message: string) {
-    return new AppError(400, message);
+    return new AppError(400, message, 'errors.badRequest');
+  }
+
+  static validation(message: string) {
+    return new AppError(400, message, 'errors.validation');
   }
 }

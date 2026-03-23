@@ -42,7 +42,7 @@ fieldLayouts:
 handle: blogCategories
 name: 'Blog Categories'
 siteSettings:
-  f76f495a-e551-493f-9e20-63b8c365295a:
+  aabab36c-4448-4cd1-bb6e-1a4d7a7cf3f7:
     hasUrls: true
     template: blog-categories/_category.twig
     uriFormat: 'blog-categories/{slug}'

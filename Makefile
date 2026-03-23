@@ -4,7 +4,7 @@
 	craft-install craft-apply craft-import craft-bash \
 	e2e e2e-ui e2e-report e2e-install \
 	wt-start wt-stop wt-logs wt-bash wt-list \
-	check gen init
+	check fix gen init
 
 # === Docker ===
 up:
@@ -91,7 +91,12 @@ e2e-install:
 
 # === Code Quality ===
 check:
-	docker compose exec api pnpm lint && docker compose exec app pnpm lint
+	docker compose exec api pnpm lint
+	docker compose exec app pnpm lint
+
+fix:
+	docker compose exec api pnpm fix
+	docker compose exec app pnpm fix
 
 # === Codegen (all) ===
 gen:

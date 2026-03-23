@@ -1,7 +1,11 @@
 import type { TypedDocumentNode } from '@graphql-typed-document-node/core';
 import { print } from 'graphql';
 
-const CRAFT_GRAPHQL_URL = process.env.NEXT_PUBLIC_CRAFT_GRAPHQL_URL!;
+type GraphQLError = { message: string; locations?: { line: number; column: number }[] };
+type GraphQLResponse<T> = { data: T; errors?: GraphQLError[] };
+
+const CRAFT_GRAPHQL_URL = process.env.NEXT_PUBLIC_CRAFT_GRAPHQL_URL;
+if (!CRAFT_GRAPHQL_URL) throw new Error('NEXT_PUBLIC_CRAFT_GRAPHQL_URL is not set');
 
 export const craftQuery = async <TResult, TVariables>(
   document: TypedDocumentNode<TResult, TVariables>,
@@ -13,7 +17,10 @@ export const craftQuery = async <TResult, TVariables>(
     body: JSON.stringify({ query: print(document), variables: variables ?? undefined }),
   });
 
-  const json = await response.json();
-  if (json.errors?.length) throw new Error(json.errors.map((e: { message: string }) => e.message).join(', '));
-  return json.data;
+  if (!response.ok) throw new Error(`CraftCMS GraphQL request failed: ${response.status} ${response.statusText}`);
+
+  const { data, errors } = (await response.json()) as GraphQLResponse<TResult>;
+  if (errors?.length) throw new Error(errors.map(({ message }) => message).join(', '));
+
+  return data;
 };
