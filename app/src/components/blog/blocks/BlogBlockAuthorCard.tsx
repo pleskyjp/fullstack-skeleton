@@ -1,8 +1,8 @@
 import Image from 'next/image';
 
-import type { BlogBlockAuthorCard } from '@/models/blog';
+import type { BlogBlockAuthorCard as BlogBlockAuthorCardType } from '@/models/blog';
 
-export const BlogBlockAuthorCard = ({ block }: { block: BlogBlockAuthorCard }) => (
+export const BlogBlockAuthorCard = ({ block }: { block: BlogBlockAuthorCardType }) => (
   <div className="flex gap-4 rounded-lg bg-gray-50 p-6">
     {block.photo[0]?.url && (
       <Image

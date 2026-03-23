@@ -1,6 +1,6 @@
-import type { BlogBlockYoutube } from '@/models/blog';
+import type { BlogBlockYoutube as BlogBlockYoutubeType } from '@/models/blog';
 
-export const BlogBlockYoutube = ({ block }: { block: BlogBlockYoutube }) => {
+export const BlogBlockYoutube = ({ block }: { block: BlogBlockYoutubeType }) => {
   const url = block.videoUrl?.url;
   const videoId = url?.match(/(?:v=|\/embed\/|youtu\.be\/)([^&?/]+)/)?.[1];
   if (!videoId) return null;

@@ -11,7 +11,7 @@ router.get('/', async (_req, res) => {
 });
 
 router.get('/:id', async (req, res) => {
-  res.json(await notesService.getById(req.params.id));
+  res.json(await notesService.getById(String(req.params.id)));
 });
 
 router.post('/', validate(CreateNoteSchema), async (req, res) => {
@@ -19,11 +19,11 @@ router.post('/', validate(CreateNoteSchema), async (req, res) => {
 });
 
 router.put('/:id', validate(UpdateNoteSchema), async (req, res) => {
-  res.json(await notesService.update(req.params.id, req.body));
+  res.json(await notesService.update(String(req.params.id), req.body));
 });
 
 router.delete('/:id', async (req, res) => {
-  await notesService.delete(req.params.id);
+  await notesService.delete(String(req.params.id));
   res.status(204).send();
 });
 

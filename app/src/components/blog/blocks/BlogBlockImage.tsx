@@ -1,8 +1,8 @@
 import Image from 'next/image';
 
-import type { BlogBlockImage } from '@/models/blog';
+import type { BlogBlockImage as BlogBlockImageType } from '@/models/blog';
 
-export const BlogBlockImage = ({ block }: { block: BlogBlockImage }) => {
+export const BlogBlockImage = ({ block }: { block: BlogBlockImageType }) => {
   const img = block.image[0];
   if (!img?.url) return null;
 

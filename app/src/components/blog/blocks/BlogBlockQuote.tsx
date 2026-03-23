@@ -1,8 +1,8 @@
 import Image from 'next/image';
 
-import type { BlogBlockQuote } from '@/models/blog';
+import type { BlogBlockQuote as BlogBlockQuoteType } from '@/models/blog';
 
-export const BlogBlockQuote = ({ block }: { block: BlogBlockQuote }) => (
+export const BlogBlockQuote = ({ block }: { block: BlogBlockQuoteType }) => (
   <blockquote className="flex flex-col gap-3 rounded-3xl bg-gray-50 p-5">
     <p className="text-center text-lg leading-6">{block.text}</p>
     {block.authorName && (

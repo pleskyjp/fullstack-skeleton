@@ -2,7 +2,8 @@ import { DEFAULT_LOCALE, SUPPORTED_LOCALES, type Locale } from './config.js';
 import cs from './messages/cs.js';
 import en from './messages/en.js';
 
-type Messages = typeof cs;
+type DeepStringify<T> = { [K in keyof T]: T[K] extends Record<string, unknown> ? DeepStringify<T[K]> : string };
+type Messages = DeepStringify<typeof cs>;
 type FlatKeys<T, P extends string = ''> =
   T extends Record<string, unknown>
     ? { [K in keyof T]: FlatKeys<T[K], P extends '' ? `${K & string}` : `${P}.${K & string}`> }[keyof T]
